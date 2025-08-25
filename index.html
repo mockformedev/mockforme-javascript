@@ -1,0 +1,52 @@
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/mockforme@latest/dist/mockforme.client.umd.js"></script>
+
+    <script>
+      var TOKEN = "ACCESS_TOKEN";
+      mockforme(TOKEN).run((mockedApis) => {
+        console.log("Mocked Apis", mockedApis);
+      });
+    </script>
+
+    <script>
+      
+      function clearText() {
+        document.getElementById("output").textContent = "";
+      }
+
+      function getUserDetailsXhr() {
+        clearText();
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "/user/me", true);
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.onload = function () {
+          if (xhr.status >= 200 && xhr.status < 300) {
+            document.getElementById("output").textContent = xhr.responseText;
+          } else {
+            document.getElementById("output").textContent = "Error: " + xhr.status;
+          }
+        };
+
+        xhr.onerror = function () {
+          document.getElementById("output").textContent = "Request failed.";
+        };
+
+        xhr.send();
+      }
+
+      function getUserDetailsFetch() {
+        clearText();
+        fetch('/user/me').then((res) => res.text()).then((data) => {
+          document.getElementById("output").textContent = data;
+        })
+      }
+    </script>
+  </head>
+  <body>
+    <button onClick="getUserDetailsXhr()">Get User Details (XHR)</button>
+    <button onClick="getUserDetailsFetch()">Get User Details (Fetch)</button>
+
+    <pre id="output"></pre>
+  </body>
+</html>
