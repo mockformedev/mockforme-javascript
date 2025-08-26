@@ -1,6 +1,10 @@
 # mockforme Integration with Vanilla JavaScript
 
-Easily mock APIs in your JavaScript projects without setting up a backend. This example shows how to use mockforme with plain JavaScript (XMLHttpRequest and fetch) in just a few steps.
+This repository demonstrates how to integrate `mockforme` with an Vanilla Javascript project to easily mock APIs during development.
+
+MockForMe enables quick API simulation, simplifying frontend testing and rapid prototyping.
+
+This example shows how to use mockforme with plain JavaScript (XMLHttpRequest and fetch) in just a few steps.
 
 ## Steps
 
